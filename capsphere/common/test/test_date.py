@@ -1,6 +1,6 @@
 import re
 import unittest
-from common.date import convert_date
+from capsphere.common.date import convert_date
 
 
 class TestConvertDate(unittest.TestCase):

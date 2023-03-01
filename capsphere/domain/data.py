@@ -29,3 +29,18 @@ class Transaction(JSONWizard):
         if not isinstance(self.average_credit, Decimal):
             raise TypeError("Field 'average_credit' must be of type 'Decimal'.")
 
+
+@dataclass(unsafe_hash=True)
+class CfStatement(JSONWizard):
+    customer_name: str
+    bank_name: str
+    transaction: Transaction
+
+    def __post_init__(self):
+        if not isinstance(self.customer_name, str):
+            raise TypeError("Field 'customer_name' must be of type 'str'.")
+        if not isinstance(self.bank_name, str):
+            raise TypeError("Field 'bank_name' must be of type 'str'.")
+        if not isinstance(self.transaction, Transaction):
+            raise TypeError("Field 'transaction' must be of type 'Transaction'.")
+

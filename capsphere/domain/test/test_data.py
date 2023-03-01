@@ -1,6 +1,6 @@
 import unittest
 
-from domain.data import Transaction
+from capsphere.domain.data import Transaction
 from decimal import Decimal
 
 

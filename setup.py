@@ -13,7 +13,7 @@ setup(
     author="Andy Lee",
     author_email="andy.mt.lee@gmail.com",
     description=DESCRIPTION,
-    keywords=['python', 'capsphere', 'pdf'],
+    keywords=['python', 'capsphere', 'pdf', 'credit'],
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
