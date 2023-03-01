@@ -1,3 +1,2 @@
-autopep8
 setuptools
 dataclass_wizard
