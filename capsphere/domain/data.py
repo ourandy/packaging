@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from decimal import Decimal
 from dataclass_wizard import JSONWizard
 
+BANKS = ['Maybank', 'CIMB', 'Ambank', 'Hong Leong', 'Alliance', 'Public Bank', 'RHB']
+
 
 @dataclass(unsafe_hash=True)
 class Transaction(JSONWizard):
@@ -43,4 +45,3 @@ class CfStatement(JSONWizard):
             raise TypeError("Field 'bank_name' must be of type 'str'.")
         if not isinstance(self.transaction, Transaction):
             raise TypeError("Field 'transaction' must be of type 'Transaction'.")
-

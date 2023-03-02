@@ -1,7 +1,8 @@
 # ddmmm	01Aug
 # dd/mm/yyyy	01/08/2022
 # dd/mm	01/08
-# ddmmyy 10822
+# ddmyy 10822
+# ddmmyy 101122
 
 import calendar
 

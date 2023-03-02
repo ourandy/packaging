@@ -6,7 +6,7 @@ There are two modules in this package:
 
 ### common 
 
-This module holds utility functions that help in the extraction of data from Malaysian bank statements.
+This module holds utility functions that help in the extraction of data from Malaysian bank statements, which are either in pdf or image format.
 
 ### domain
 
