@@ -1,5 +1,5 @@
 import pandas as pd
-from utils import generate_average_rcf
+from capsphere.model.data import generate_average_rcf
 
 
 def create_worksheet(wb_name: str, data: list[dict]) -> None:

@@ -1,12 +1,15 @@
 from dataclasses import dataclass
 from decimal import Decimal
 from dataclass_wizard import JSONWizard
+from typing import Type
 
 BANKS = ['Maybank', 'CIMB', 'Ambank', 'Hong Leong', 'Alliance', 'Public Bank', 'RHB']
 
+FILE_FORMATS = ['jpg', 'img', 'pdf']
+
 
 @dataclass(unsafe_hash=True)
-class Transaction(JSONWizard):
+class Cf(JSONWizard):
     month: str
     start_balance: Decimal
     end_balance: Decimal
@@ -33,15 +36,20 @@ class Transaction(JSONWizard):
 
 
 @dataclass(unsafe_hash=True)
-class CfStatement(JSONWizard):
+class MonthlyCf(JSONWizard):
     customer_name: str
     bank_name: str
-    transaction: Transaction
+    cash_flow: list[Cf]
 
     def __post_init__(self):
         if not isinstance(self.customer_name, str):
             raise TypeError("Field 'customer_name' must be of type 'str'.")
         if not isinstance(self.bank_name, str):
             raise TypeError("Field 'bank_name' must be of type 'str'.")
-        if not isinstance(self.transaction, Transaction):
-            raise TypeError("Field 'transaction' must be of type 'Transaction'.")
+        if not isinstance(self.cash_flow, list) and not all(isinstance(item, Cf) for item in self.cash_flow):
+            raise TypeError("Field 'cash_flow' must be a list of type 'Cf'.")
+        if not self.cash_flow:
+            raise ValueError("Field 'cash_flow' must have one or more items.")
+
+    def to_rcf(self) -> Type['MonthlyCf']:
+        return MonthlyCf
